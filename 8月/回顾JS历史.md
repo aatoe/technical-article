@@ -8,7 +8,7 @@
 
 1995年 网景公司招聘了 Brendan Eich 当时34岁,现在58岁
 
-![Brendan Eich](/Users/atoe/Desktop/blog/8月/images/Brendan Eich.jpeg)
+![image](https://github.com/aatoe/-/blob/master/8%E6%9C%88/images/Brendan%20Eich.jpeg)
 
 这个人可是学富五车,精通各种语言. 当时网景公司要求**未来的网页脚本语言必须"看上去与Java足够相似"，但是比Java简单，使得非专业的网页作者也能很快上手,**但是，他对Java一点兴趣也没有。为了应付公司安排的任务，他只用10天时间就把Javascript设计出来了。 
 
