@@ -30,7 +30,7 @@
 
 那么一开始 目录结构搭建好,`package.json` `webpack.config.js` `css` `js`
 
-![picture](C:\Users\ATOE\Desktop\webpack-demo\images\picture.jpg)
+![picture](https://github.com/aatoe/-/blob/master/8%E6%9C%88/webpack-demo/images/picture.jpg)
 
 由于我已经写了一小部分了,最开始是 js+html 就够了.  其实我们最初可以打包一个js文件的时候可以用
 
@@ -311,7 +311,7 @@ plugins: [    //热更新插件
 
 从图片可以看出,就是,我们mycss.css修改了,然后webpack中的HMR帮我们热更新了.
 
-![hot-updata](C:\Users\ATOE\Desktop\webpack-demo\images\hot-updata.png)
+![hot-updata](https://github.com/aatoe/-/blob/master/8%E6%9C%88/webpack-demo/images/hot-updata.png)
 
 
 
@@ -341,11 +341,11 @@ export default function printMe() {
 
 开启前
 
-![no-source-map](C:\Users\ATOE\Desktop\webpack-demo\images\no-source-map.png)
+![no-source-map](https://github.com/aatoe/-/blob/master/8%E6%9C%88/webpack-demo/images/no-source-map.png)
 
 开启后
 
-![source-map](C:\Users\ATOE\Desktop\webpack-demo\images\source-map.png)
+![source-map](https://github.com/aatoe/-/blob/master/8%E6%9C%88/webpack-demo/images/source-map.png)
 
 从图中我们可以看出,sourcemap 可以清楚知道那个文件那一行出错了.
 
