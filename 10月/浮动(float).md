@@ -61,8 +61,8 @@
 
   ```
   overflow:这个东西他的本质工作是解决溢出的元素内容就行隐藏.
-  然后再这里可以清除浮动,主要一个原因是因为触发了一个BFC(block format content)机制.
-  块级格式化上下文,当然也有IFC(inline format content),内联格式化上下文.有空回来补上吧.
+  然后再这里可以清除浮动,主要一个原因是因为触发了一个BFC(Block Formatting Context)机制.
+  块级格式化上下文,当然也有IFC(Inline Formatting Context),内联格式化上下文.有空回来补上吧.
   ```
 
 + 双伪元素标签法
