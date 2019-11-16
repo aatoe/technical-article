@@ -1,0 +1,59 @@
+ /* 方便开发使用* 上线的时候把常见有间距标签改一下就好了 */
+ * {
+     margin: 0;
+     padding: 0;
+     /* 给所有元素设置这个盒模型属性为了让盒模型的和设置的宽度一样 
+    因为移动端做全屏页面宽度100% 如果因为边框或者padding导致超出范围出现滚动条不利于用户体验 */
+     box-sizing: border-box;
+     /* 设置移动端点击高亮背景色  去掉就设置为透明颜色即可*/
+     -webkit-tap-highlight-color: transparent;
+     /* 设置文字允许字体小于12px; */
+     -webkit-text-size-adjust: none;
+     /* 防止文字的锯齿样式 */
+     -webkit-font-smoothing: antialiased;
+ }
+
+ /* 给body设置字体默认样式 */
+ body {
+     background: #fff;
+     font-size: 14px;
+     font-family: -apple-system, Helvetica, sans-serif;
+     line-height: 1.5;
+ }
+
+ a {
+     text-decoration: none;
+     color: #666;
+ }
+
+ li {
+     list-style: none;
+ }
+
+ input {
+     border: 0;
+     outline: none;
+ }
+
+ img {
+     border: 0;
+     /* 解决图片底部3px间隙问题 */
+     vertical-align: middle;
+ }
+
+ i {
+     /* 去掉斜体 */
+     font-style: normal;
+ }
+
+ .clearfix::after {
+     content: ".";
+     height: 0;
+     clear: both;
+     visibility: hidden;
+     display: block;
+ }
+
+ .clearfix {
+     *zoom: 1;
+ }

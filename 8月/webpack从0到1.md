@@ -2,7 +2,7 @@
 
 最近思考过一个问题? 为什么前端会存在,而不是后端会称霸. 
 
-因为后端做了我们前端比较细节的东西,比如工程化,性能优化更是一个大坑,跳进去就出不来了.
+因为后端做不了我们前端比较细节的东西,比如工程化,性能优化更是一个大坑,跳进去就出不来了.
 
 然后webpack就是属于前端的工程化,webpack原理性的东西还是比较难的,就是一个普通前端恐怕也不了解一二.更别说后端.
 
@@ -30,7 +30,7 @@
 
 那么一开始 目录结构搭建好,`package.json` `webpack.config.js` `css` `js`
 
-![picture](C:\Users\ATOE\Desktop\webpack-demo\images\picture.jpg)
+![picture](https://github.com/aatoe/-/blob/master/8%E6%9C%88/webpack-demo/images/picture.jpg)
 
 由于我已经写了一小部分了,最开始是 js+html 就够了.  其实我们最初可以打包一个js文件的时候可以用
 
@@ -311,7 +311,7 @@ plugins: [    //热更新插件
 
 从图片可以看出,就是,我们mycss.css修改了,然后webpack中的HMR帮我们热更新了.
 
-![hot-updata](C:\Users\ATOE\Desktop\webpack-demo\images\hot-updata.png)
+![hot-updata](https://github.com/aatoe/-/blob/master/8%E6%9C%88/webpack-demo/images/hot-updata.png)
 
 
 
@@ -341,16 +341,18 @@ export default function printMe() {
 
 开启前
 
-![no-source-map](C:\Users\ATOE\Desktop\webpack-demo\images\no-source-map.png)
+![no-source-map](https://github.com/aatoe/-/blob/master/8%E6%9C%88/webpack-demo/images/no-source-map.png)
 
 开启后
 
-![source-map](C:\Users\ATOE\Desktop\webpack-demo\images\source-map.png)
+![source-map](https://github.com/aatoe/-/blob/master/8%E6%9C%88/webpack-demo/images/source-map.png)
 
 从图中我们可以看出,sourcemap 可以清楚知道那个文件那一行出错了.
 
 其实我们是不会靠自己去配webpack这包工具的,效率这个问题上,让我们去用脚手架,因为脚手架是有人去维护的,实时更新版本,不像个人维护的,版本还要自己去摸索控制,试问精力哪里有这么多,当然公司团队强大肯定会有人去做这个事情.
 
+(完)
+欢迎关注我的公众号 郭教练的Web世界
 
 
 欢迎关注我的github : <https://github.com/aatoe/->
