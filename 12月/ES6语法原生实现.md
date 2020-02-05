@@ -116,3 +116,135 @@ Array.prototype._filter = function(callback){
  console.log(a);
 ```
 
+<u>分界线，下面只说如果用，不在把自己当作是babel，方法太强大，可能无法覆盖到他的强大</u>
+
+### 6.Array.from() 
+
+###  将伪数组对象或可遍历对象转换为真数组
+
+```js
+Array.from(arrayLike[, mapFn[, thisArg]])
+```
+
+arrayLike：必传参数，累似数组的东西，也可以其他东西，很灵活。
+
+mapFn：选填参数，回调函数，每一项都会经过回调函数的处理在返回出去，如果没有，那就没有。
+
+thisArg：选填，他其实意义不太大，就是this。 arrayLike 
+
+```js
+// 引自 大佬刘小夕
+https://segmentfault.com/a/1190000020221170
+// 引自MDN
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/from
+
+例子1 
+let a = Array.from("atoe", x => {
+   return x.toUpperCase()
+})
+console.log(a); // ["A", "T", "O", "E"]
+例子2 
+let a = Array.from("atoe")
+console.log(a); //  ["a", "t", "o", "e"]
+
+
+原生实现
+ Array._from = function (params, callback) {
+   // slice返回数组，这里用call的原因是因为params不是一个数组，无法调用这个方法的，那么通过this改变指向
+     let arr = Array.prototype.slice.call(params);
+     if (callback) {
+         for (let i = 0; i < arr.length; i++) {
+             let res = callback(arr[i])
+             arr.splice(i, 1, res);
+         }
+     }
+     return arr
+ }
+ let a = Array._from("atoe", (x) => {
+     return x.toUpperCase()
+ })
+```
+
+### 7.Array.of(v1, v2, v3) 
+
+#### Array.of() 方法创建一个具有可变数量参数的新数组实例，而不考虑参数的数量或类型。
+
+```js
+Array.of(7);       // [7] 
+Array.of(1, 2, 3); // [1, 2, 3]
+
+// 太简单了，不想实现。
+```
+
+### 8.find() 和 findIndex()
+
+#### find()：方法返回数组中满足提供的测试函数的第一个元素的值。否则返回 undefined。
+
+#### findIndex()：它返回数组中找到的元素的索引，而不是其值。
+
+```js
+// find
+ Array.prototype._find = function(callback){
+   for (let i = 0; i < this.length; i++) {
+       let res = callback(this[i],this)
+       if(res){
+           return this[i]
+       }
+   }
+     return  
+ }
+
+ let arr = [1,2,3];
+ let a = arr._find((x)=>{
+     return  x > 0
+ })
+ console.log(a); // 1
+
+// findIndex() 其实他返回的是索引，return i 不就可以了吗？ 是的。不写了
+```
+
+### 9.includes()
+
+#### includes()：用来判断一个数组是否包含一个指定的值，根据情况，如果包含则返回 true，否则返回false。
+
+```js
+// arr.includes(valueToFind[, fromIndex])
+//valueToFind：必填参数
+// fromIndex：选填参数
+Array.prototype._includes = function (params, index) {
+     let i = index || 0
+     for (i; i < this.length; i++) {
+         if (params === this[i]) {
+             return true
+         }
+     }
+     return false
+ 		}
+
+ let arr = [0, 1, 2, 3, 4];
+ let a = arr._includes(1,1)
+ console.log(a);
+// true
+```
+
+### 10.reduce()
+
+### 方法对数组中的每个元素执行一个由您提供的**reducer**函数(升序执行)，将其结果汇总为单个返回值。
+
+```js
+let arr = [1, 2, 3, 4, 5];
+// reduce--->有两个参数，callback，和 初始值
+// callback--->有四个参数 累加器 当前值 当前索引值，当前数组（没啥用的）
+// 注意点：就是当我们的初始值没有传的时候，累加器的第一项是数组的第一项。另外一种情况就是初始值传了，累加器第一项就是我们的初始值。
+let sum = arr.reduce((accumulator, currentValue, i,arr) => {
+    console.log(accumulator, currentValue, i,arr);
+    return accumulator + currentValue
+}, 0)
+// 因为这个方法存在一些不确定性，一半配合map便利一层在传过来
+```
+
+
+
+### 11. entries()，keys() 和 values()
+
+#### 数组实例
