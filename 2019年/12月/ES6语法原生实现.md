@@ -96,7 +96,6 @@ Array.prototype._every = function(callback){
 #### 符合条件则添加到数组返回，如果都没有则返回[]
 
 ```js
-// 哎，太简单了，不想说。
 Array.prototype._filter = function(callback){
       let arr = []
       for(let i = 0;i<this.length;i++){
@@ -108,7 +107,7 @@ Array.prototype._filter = function(callback){
       return arr
   }
   let arr = [0, 2, 4]
- // 忘了一个问题，return可以缩写，哈哈
+ // 忘了一个问题，return可以缩写
   // let a = arr._filter(e => e >= 2) 
   let a = arr._filter(e => {
       return e >= 2
