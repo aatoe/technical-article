@@ -1,11 +1,11 @@
-var superagent = require("superagent")
-var charset = require("superagent-charset")
+const superagent = require("superagent")
+const charset = require("superagent-charset")
 charset(superagent)
-var baseUrl = "https://www.wonadea.com/" //输入任何网址都可以
+const baseUrl = "https://www.wonadea.com/" //输入任何网址都可以
 const cheerio = require("cheerio")
-var fs = require("fs")
-var path = require("path")
-let request = require("request")
+const fs = require("fs")
+const path = require("path")
+const request = require("request")
 
 // url  https://www.wonadea.com/forum-2-1.html
 /* 
@@ -28,13 +28,13 @@ for (let i = start; i < end; i++) {
     .get(baseUrl + route)
     .charset("gb2312")
     .end(function (err, sres) {
-      var items = []
+      let items = []
       if (err) {
         console.log("ERR: " + err)
         // res.json({ code: 400, msg: err, sets: items })
         return
       }
-      var $ = cheerio.load(sres.text)
+      let $ = cheerio.load(sres.text)
       $(".plc .pct .pcb tbody .t_f div ignore_js_op img").each(function (
         index,
         element
