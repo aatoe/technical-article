@@ -65,18 +65,6 @@ diff算法，根据key的值来判断。
 作用的话，便于diff算法的更新，key的唯一性，能让算法更快的找到需要更新的dom，需要注意的是，key要唯一，不然会出现很隐蔽性的更新问题。
 ```
 
-**8.vue边界情况**
-
-```
-
-```
-
-**9.你对vue的错误处理**
-
-```
-http://www.imooc.com/article/288017?block_id=tuijian_wz
-```
-
 **10.在vue事件中传入$event，使用e.target和e.currentTarget有什么区别**
 
 ```
@@ -224,12 +212,6 @@ propF: {
 }
 ```
 
-**20.怎么缓存当前打开的路由组件，缓存后想更新当前组件怎么办**
-
-```
-
-```
-
 **21.说说你对vue组件的设计原则的理解**
 
 ```
@@ -276,7 +258,15 @@ propF: {
 **26.用vue怎么实现一个换肤的功能**
 
 ```
+方法一。
+1.通过用户选择相应的颜色，
+2.将颜色加进去到最外层的样式（style）里面，使用 !important。将后面用到的选择器都加上。
 
+大概如下。
+ style.innerHTML = ` .top-bar-container, .top-bar-container .byui-main, .side-bar-container, .logo-container-vertical, .logo-container-horizontal, .el-menu, .el-menu-item, .el-submenu.is-active.is-opened, .el-submenu__title, .el-menu-item.is-active, .el-menu-item .is-active { background-color:${menuBackground}!important; } body .el-menu--horizontal .top-bar-item-container  .el-menu-item:hover, body .el-menu--horizontal .top-bar-item-container .el-menu-item.is-active, body .app-wrapper .side-bar-container .el-submenu .el-menu-item.is-active, body .app-wrapper .side-bar-container  .el-menu-item:hover,body .side-bar-container .el-menu .el-menu-item.is-active{ background-color:${menuBackgroundActive}!important; } .tags-view-item.router-link-exact-active.router-link-active.active{ background-color: ${tagViewsBackgroundActive}!important; border: 1px solid ${tagViewsBackgroundActive}!important; } .el-button.el-button--primary{background-color: ${buttonBackground}!important;border-color: ${buttonBackground}!important;} .el-pagination.is-background .el-pager li:not(.disabled).active{background-color: ${paginationBackgroundActive}!important;border-color: ${paginationBackgroundActive}!important;}body .app-wrapper .side-bar-container .nest-menu .el-menu-item {background-color: ${menuChildrenBackground} !important;}`;
+
+方法二。
+预先配置好主题，通过切换主题即可。也可以模仿上面的操作，也可以使用 gulp-css-wrap
 ```
 
 **28.vue性能优化**
