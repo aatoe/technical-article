@@ -153,13 +153,13 @@ Promise.all([p1, p2, p3]).then(function (msgs) {
  });
 // [] 
 // 1
-// "Oops"
+// "Oops"	
 // [1,1,"Hello World"]
 ```
 
-#### Promise 的缺点
+#### Promise 的性能
 
 ```
-
+promise 与传统回调比较的话，确实浪费一些时间，因为promise里面做了很多动作，所以性能稍微低一点的，但是带来的是编程效率的提高。显然promise是值得推荐的。
 ```
 
