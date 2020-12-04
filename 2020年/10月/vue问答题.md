@@ -1,4 +1,4 @@
-# vue问答题
+# vue问答题 基于element-ui
 
 **1.style加scoped属性的用途和原理**
 
@@ -7,12 +7,15 @@
 原理：在标签加上v-data-something属性，再在选择器时加上对应[v-data-something]，即CSS带属性选择器，以此完成类似作用域的选择方式
 ```
 
-**2.怎么重置data**
+**2.怎么重置数据**
 
 ```
 1.逐个赋值
 2.使用 Object.assign(this.data, this.$options.data())
 3.重置 data 中某个对象或属性，比如this.params：this.params = this.$options.data().params
+
+
+重置from表单的数据 this.$refs[formName].resetFields();
 ```
 
 **3.vue组件之间的通信都有哪些**
