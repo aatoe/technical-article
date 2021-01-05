@@ -1,5 +1,7 @@
 # watch原理
 
+> 当监听状态发生改变就会触发。
+>
 > watch在工作中用的还是挺多的，但是原理还是不怎么清楚，现在就来好好理解一下吧！
 >
 > 用法
@@ -7,22 +9,22 @@
 > ```jsx
 > 
 > watch: {
->   // 第一种方式
->     watchProps(newVal, oldVal) {
->       this.xx = "111";
->       // dosomething
->     },
->   // 第二种方式，可以兼容 'watchProps.xx.yy' 以前不懂的时候一直通过 computer 把属性返回出来 
->   // 看了同事代码才幡然醒悟。😭😭
->     'watchProps':{
->       handler(newVal, oldVal) {
->           this.xx = "111";
->       		// dosomething
->       },
->        immediate: true, // 立即监听
->        	deep:true // 深度监听
->     }
->   } 
+> // 第一种方式
+>  watchProps(newVal, oldVal) {
+>    this.xx = "111";
+>    // dosomething
+>  },
+> // 第二种方式，可以兼容 'watchProps.xx.yy' 以前不懂的时候一直通过 computer 把属性返回出来 
+> // 看了同事代码才幡然醒悟。😭😭
+>  'watchProps':{
+>    handler(newVal, oldVal) {
+>        this.xx = "111";
+>    		// dosomething
+>    },
+>     immediate: true, // 立即监听
+>     	deep:true // 深度监听
+>  }
+> } 
 > ```
 
 ##### 顺便区分一下watch 和 computer的用法以及场景
@@ -39,11 +41,22 @@ watch 监听器，它就是监听一个状态的变化，只要变化就会触�
 
 ​			2.当组件传值，监听状态做一些相应的操作。
 
+综上所述：`computed` 适用一个数据被多个数据影响，而 `watch` 适用一个数据影响多个数据。
+
 
 
 ## 原理
 
 
 
-## computer原理
+## computer
 
+> **计算属性是基于它们的响应式依赖进行缓存的**。只在相关响应式依赖发生改变时它们才会重新求值，而 `watch` 则是当数据发生变化便会调用执行函数
+>
+> `computed` 是计算一个新的属性，并将该属性挂载到 vm（Vue 实例）上，而 `watch` 是监听已经存在且已挂载到 `vm` 上的数据，所以用 `watch` 同样可以监听 `computed` 计算属性的变化（其它还有 `data`、`props`）。
+>
+> 
+
+
+
+原理是，通过 Object.defineProperty，进行绑定，当响应的数据没有变化就不变化，和双向数据绑定差不多。
