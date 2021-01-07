@@ -25,6 +25,17 @@
 >     	deep:true // 深度监听
 >  }
 > } 
+> // 第三种方式 ,var vm = new Vue({})
+> vm.$watch('a.b.c',(newVal,oldVal)=>{
+>   	// dosomething
+> },{
+>   deep:true,
+>   immediate:truem
+> })
+> 
+> deep,immediate 非必传。
+> 
+> 还可以主动取消观察函数 watcher.teardown()
 > ```
 
 ##### 顺便区分一下watch 和 computer的用法以及场景
@@ -46,6 +57,12 @@ watch 监听器，它就是监听一个状态的变化，只要变化就会触�
 
 
 ## 原理
+
+在双向数据绑定的时候 有一个Watcher类，只是当时没有deep，immediate参数，只需要加上判断，即可，
+
+还有可以监听函数，将当前函数赋值给getter，这就可以了,监听的函数里面涉及到的状态都会被监听到，发生了变化就会触发watch。
+
+还要新增一个取消观察函数的函数。
 
 
 
