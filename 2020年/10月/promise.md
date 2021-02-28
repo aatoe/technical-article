@@ -157,6 +157,48 @@ Promise.all([p1, p2, p3]).then(function (msgs) {
 // [1,1,"Hello World"]
 ```
 
+#### Promise.allSettled([ .. ]) 
+
+Promise.allSettled 的语法及参数跟 Promise.all 类似，其参数接受一个 Promise 的数组，返回一个新的 Promise。唯一的不同在于，执行完之后不会失败，也就是说当 Promise.allSettled 全部处理完成后，我们可以拿到每个 Promise 的状态，而不管其是否处理成功。
+
+```js
+const resolved = Promise.resolve(2);
+const rejected = Promise.reject(-1);
+const allSettledPromise = Promise.allSettled([resolved, rejected]);
+allSettledPromise.then(function (results) {
+  console.log(results);
+});
+// 返回结果：
+// [
+//    { status: 'fulfilled', value: 2 },
+//    { status: 'rejected', reason: -1 }
+// ]
+```
+
+从上面代码中可以看到，Promise.allSettled 最后返回的是一个数组，记录传进来的参数中每个 Promise 的返回值，这就是和 all 方法不太一样的地方。你也可以根据 all 方法提供的业务场景的代码进行改造，其实也能知道多个请求发出去之后，Promise 最后返回的是每个参数的最终状态。
+
+#### Promise.any([ .. ]) 
+
+any 方法返回一个 Promise，只要参数 Promise 实例有一个变成 fulfilled 状态，最后 any 返回的实例就会变成 fulfilled 状态；如果所有参数 Promise 实例都变成 rejected 状态，包装实例就会变成 rejected 状态。
+
+```js
+const resolved = Promise.resolve(2);
+const resolved3 = Promise.resolve(3);
+const rejected = Promise.reject(-1);
+const allSettledPromise = Promise.any([resolved，resolved3，rejected]);
+allSettledPromise
+  .then(function (results) {
+    console.log(results);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+// 返回结果：
+// 2
+```
+
+从改造后的代码中可以看出，只要其中一个 Promise 变成 fulfilled 状态，那么 any 最后就返回这个 Promise。由于上面 resolved 这个 Promise 已经是 resolve 的了，后面resolved3，rejected都不会继续执行，故最后返回结果为 2。
+
 #### Promise 的性能
 
 ```
