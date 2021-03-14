@@ -88,27 +88,28 @@ p2.then(null, (value) => {
   console.log(value); // 这是一个错误
 });
 p2.catch((err) => {
-  console.log(err);
+  console.log(err); // 这是一个错误
 });
 
 
 // 2.resolve 返回 promise
- const p1 = new Promise((resolve, reject) => {
-	  setTimeout(() =>
-        // reject(new Error("这是一个错误")
-        resolve(1)
-     ), 1000);
-	});
+const p1 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          reject(new Error("这是一个错误"));
+          // resolve(1);
+        }, 1000);
+      });
 
-	const p2 = new Promise((resolve, reject) => {
-	  setTimeout(() => resolve(p1), 1000);
-	});
+const p2 = new Promise((resolve, reject) => {
+        setTimeout(() => resolve(p1), 1000);
+      });
 
-	p2.then((result) => 
-    console.log(result)) // 1
-   .catch((error) =>
-	  console.log(error)
-	); // 这是一个错误
+      p2.then(
+        (result) => console.log(result),
+        (error) => console.log(error) 
+        // 如果写了里面这个捕获错误的，外面的catch就不会捕获到了。所以一般then 有多层的是很好，或者习惯，都是在外层使用catch捕获错误。
+      ) // 1
+        .catch((error) => console.log(error)); // 这是一个错误
 
 这种代码尽量少写，存在风险，p2可能很慢，p1报错了，浏览器由报错，然后变成捕获错误，
 说到底还是捕获错误是一门技术活。
